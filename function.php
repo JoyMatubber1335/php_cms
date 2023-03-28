@@ -1,5 +1,42 @@
 <?php
 include "db.php";
+
+
+
+function Create()
+{
+   global $conn;
+   if(isset($_POST["submit"]))
+   {
+       $username=$_POST["username"];
+       $password=$_POST["password"];
+       $username=mysqli_real_escape_string($conn,$username);
+       $password=mysqli_real_escape_string($conn,$password);
+  // password encript 
+       $hashFormet="$2y$10$";
+       $salt="iusesomecrazystrings22";
+       $hashF_and_salt = $hashFormet . $salt;
+       $password=crypt($password,$hashF_and_salt);
+
+       
+       $query="insert into users(username,password)";
+       $query .= "values('$username','$password')";
+   
+       $result=mysqli_query($conn,$query);
+       if(!$result)
+       {
+   echo "Unable to connect";
+       }
+       else{
+         echo "Added value";
+       }
+      
+   
+   
+       
+   }
+}
+
 function showAllData()
 {
     global $conn;
@@ -34,6 +71,29 @@ function UpdateTable()
    if(!$result)
    {
            die("query faid".mysqli_error($conn));
+ }
+ else{
+   echo "Value Updated";
+ }
+
+}
+
+function DeleteRows()
+{ 
+
+   global $conn;
+   $username=$_POST["username"];
+    $password=$_POST["password"];
+    $id=$_POST['id'];
+    $query="Delete from users ";
+     $query .="where id=$id ";
+    $result=mysqli_query($conn,$query);
+   if(!$result)
+   {
+           die("query faid".mysqli_error($conn));
+ }
+ else{
+   echo "Value Deleted";
  }
 
 }

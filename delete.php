@@ -6,7 +6,7 @@ include "function.php";
 if(isset($_POST["submit"]))
 {
 
-UpdateTable();
+DeleteRows();
 }
  
  ?>
@@ -24,10 +24,10 @@ UpdateTable();
 <body>
 
 <div class="container">
-<div class="col-sm-6">
-<h1 class ="text-center">Update</h1>
+<div class="col-xs-6">
+<h1 class ="text-center">Delete</h1>
 
-<form action="update.php" method="post">
+<form action="delete.php" method="post">
 <div class="form-group"> 
     <label for="username">Username</label>
     <input type="text" name =" username"class="form-control">
@@ -55,7 +55,7 @@ UpdateTable();
 </select>
 </div>
 
-<input class ="btn btn-primary" type="submit" name ="submit" value="UPDATE">
+<input class ="btn btn-primary" type="submit" name ="submit" value="DELETE ">
 
 </div>
 
