@@ -1,33 +1,28 @@
 <?php
+
+include "db.php";
+include "function.php";
+
 if(isset($_POST["submit"]))
 {
     $username=$_POST["username"];
     $password=$_POST["password"];
-    echo $username;
-    echo "<br>";
-    echo $password;
-    $conn=mysqli_connect("localhost","root","","loginapp");
+    $id=$_POST['id'];
+    $query="Update users SET ";
+     $query .= "username='$username', ";
 
-    $query="insert into users(username,password)";
-    $query .= "values('$username','$password')";
-
+     $query .="password='$password' ";
+     $query .="where id=$id ";
     $result=mysqli_query($conn,$query);
-    if(!$result)
-    {
-echo "Unable to connect";
-    }
-   
-
-
-    
-}
+   if(!$result)
+   {
+           die("query faid".mysqli_error($conn));
+ }
 
  
-
-?>
-
-
-
+}
+ 
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +39,7 @@ echo "Unable to connect";
 <div class="container">
 <div class="col-xs-6">
 
-<form action="login.php" method="post">
+<form action="update.php" method="post">
 <div class="form-group"> 
     <label for="username">Username</label>
     <input type="text" name =" username"class="form-control">
@@ -55,12 +50,29 @@ echo "Unable to connect";
 </div>
 
 
-    <input class ="btn btn-primary" type="submit" name ="submit" value="Submit">
+    <!-- <input class ="btn btn-primary" type="submit" name ="submit" value="Submit"> -->
+
+<div class="form-group">
+
+<select name="id" id="">
+    <?php
+
+    showAllData();
+
+    ?>
 
 
+
+
+</select>
+</div>
+
+<input class ="btn btn-primary" type="submit" name ="submit" value="UPDATE">
+
+</div>
 
 </form>
-</div>
+
 
 
 
