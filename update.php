@@ -5,19 +5,20 @@ include "function.php";
 
 if(isset($_POST["submit"]))
 {
-    $username=$_POST["username"];
-    $password=$_POST["password"];
-    $id=$_POST['id'];
-    $query="Update users SET ";
-     $query .= "username='$username', ";
+//     $username=$_POST["username"];
+//     $password=$_POST["password"];
+//     $id=$_POST['id'];
+//     $query="Update users SET ";
+//      $query .= "username='$username', ";
 
-     $query .="password='$password' ";
-     $query .="where id=$id ";
-    $result=mysqli_query($conn,$query);
-   if(!$result)
-   {
-           die("query faid".mysqli_error($conn));
- }
+//      $query .="password='$password' ";
+//      $query .="where id=$id ";
+//     $result=mysqli_query($conn,$query);
+//    if(!$result)
+//    {
+//            die("query faid".mysqli_error($conn));
+//  }
+UpdateTable();
 
  
 }

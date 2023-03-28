@@ -18,4 +18,30 @@ while($row =mysqli_fetch_assoc($result))
 }
 }
 
+function UpdateTable()
+{ 
+
+   global $conn;
+   $username=$_POST["username"];
+    $password=$_POST["password"];
+    $id=$_POST['id'];
+    $query="Update users SET ";
+     $query .= "username='$username', ";
+
+     $query .="password='$password' ";
+     $query .="where id=$id ";
+    $result=mysqli_query($conn,$query);
+   if(!$result)
+   {
+           die("query faid".mysqli_error($conn));
+ }
+
+}
+
+
+
+
+
+
+
 ?>
