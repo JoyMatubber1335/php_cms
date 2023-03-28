@@ -13,10 +13,10 @@ function Create()
        $username=mysqli_real_escape_string($conn,$username);
        $password=mysqli_real_escape_string($conn,$password);
   // password encript 
-       $hashFormet="$2y$10$";
+      //  $hashFormet="$2y$10$";
        $salt="iusesomecrazystrings22";
-       $hashF_and_salt = $hashFormet . $salt;
-       $password=crypt($password,$hashF_and_salt);
+      //  $hashF_and_salt = $hashFormet . $salt;
+       $password=crypt($password,$salt);
 
        
        $query="insert into users(username,password)";
@@ -91,7 +91,7 @@ function DeleteRows()
    if(!$result)
    {
            die("query faid".mysqli_error($conn));
- }
+ } 
  else{
    echo "Value Deleted";
  }
